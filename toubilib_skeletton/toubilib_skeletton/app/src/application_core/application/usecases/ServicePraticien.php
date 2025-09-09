@@ -5,6 +5,8 @@ namespace toubilib\core\application\usecases;
 
 
 
+use toubilib\core\application\ports\api\ServicePraticienInterface;
+
 class ServicePraticien implements ServicePraticienInterface
 {
     private PraticienRepositoryInterface $praticienRepository;
