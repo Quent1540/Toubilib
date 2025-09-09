@@ -17,4 +17,8 @@ class ServicePraticien implements ServicePraticienInterface
     public function listerPraticiens(): array {
     	return $this->praticienRepository->findAll();
     }
+
+    public function afficherPraticien($id) {
+        return $this->praticienRepository->findById($id);
+    }
 }

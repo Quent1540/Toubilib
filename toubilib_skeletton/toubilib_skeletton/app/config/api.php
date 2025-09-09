@@ -1,8 +1,12 @@
 <?php
 use src\api\actions\getAllPraticiensAction;
+use toubilib\api\actions\getPraticienDetailsAction;
 
 return [
     'getAllPraticiensAction' => function($container) {
         return new getAllPraticiensAction($container->get('servicePraticien'));
+    },
+    'getPraticienDetailsAction' => function($container) {
+        return new getPraticienDetailsAction($container->get('servicePraticien'));
     },
 ];
