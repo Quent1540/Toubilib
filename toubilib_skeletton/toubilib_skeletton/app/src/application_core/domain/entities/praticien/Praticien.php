@@ -2,7 +2,6 @@
 
 namespace toubilib\core\domain\entities\praticien;
 
-
 class Praticien
 {
     private string $id;
