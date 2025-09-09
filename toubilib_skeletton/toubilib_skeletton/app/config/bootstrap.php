@@ -8,7 +8,12 @@ $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ );
 $dotenv->load();
 
 
-
+$builder = new ContainerBuilder();
+$builder->useAutowiring(false);
+$builder->addDefinitions(__DIR__ . '/settings.php');
+$builder->addDefinitions(__DIR__ . '/services.php');
+$builder->addDefinitions(__DIR__ . '/actions.php');
+$c=$builder->build();
 $app = AppFactory::create();
 
 
