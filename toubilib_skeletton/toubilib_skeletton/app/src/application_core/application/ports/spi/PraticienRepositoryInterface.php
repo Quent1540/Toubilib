@@ -1,5 +1,5 @@
 <?php
-namespace toubilib\core\application\ports\api\spi;
+namespace toubilib\core\application\ports\spi;
 
 use toubilib\core\domain\entities\Praticien;
 

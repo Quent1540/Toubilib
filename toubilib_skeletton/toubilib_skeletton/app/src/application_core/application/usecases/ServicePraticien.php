@@ -3,7 +3,7 @@
 namespace toubilib\core\application\usecases;
 
 use toubilib\core\application\ports\api\ServicePraticienInterface;
-use toubilib\core\application\ports\api\spi\PraticienRepositoryInterface;
+use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 
 class ServicePraticien implements ServicePraticienInterface
 {
