@@ -10,13 +10,11 @@ class getAllPraticiensAction extends AbstractAction
 {
     private $servicePraticien;
 
-    public function __construct(PraticienRepositoryInterface $servicePraticien)
-    {
+    public function __construct(PraticienRepositoryInterface $servicePraticien){
         $this->servicePraticien = $servicePraticien;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
-    {
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface{
         $praticiens = $this->servicePraticien->listerPraticiens();
         $praticiensArray = array_map(fn($p) => $p->toArray(), $praticiens);
         $response->getBody()->write(json_encode($praticiensArray));

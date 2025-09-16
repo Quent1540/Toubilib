@@ -12,7 +12,7 @@ return function( \Slim\App $app):\Slim\App {
 
     $app->get('/', HomeAction::class);
     $app->get('/praticiens', \toubilib\api\actions\getAllPraticiensAction::class);
-    $app->get('/praticiens/1', \toubilib\api\actions\getPraticienDetailsAction::class);
+    $app->get('/praticiens/{id}', \toubilib\api\actions\getPraticienDetailsAction::class);
 
     return $app;
 };

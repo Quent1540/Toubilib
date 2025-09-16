@@ -1,5 +1,6 @@
 <?php
 
+use toubilib\api\actions\getPraticienDetailsAction;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\infra\repositories\PDOPraticienRepository;
 use toubilib\api\actions\getAllPraticiensAction;
@@ -14,5 +15,8 @@ return [
     },
     getAllPraticiensAction::class => function($container) {
         return new getAllPraticiensAction($container->get(PraticienRepositoryInterface::class));
+    },
+    getPraticienDetailsAction::class => function($container) {
+        return new getPraticienDetailsAction($container->get(PraticienRepositoryInterface::class));
     },
 ];

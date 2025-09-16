@@ -23,8 +23,14 @@ class PDOPraticienRepository implements PraticienRepositoryInterface
         return $praticiens;
     }
 
-    public function findById($id): Praticien
-    {
-        //A faire
+    public function detailsPraticien(string $id): ?Praticien {
+        $stmt = $this->pdo->prepare('SELECT * FROM praticien WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($row) {
+            return new Praticien($row['id'], $row['nom'], $row['prenom'], $row['specialite_id']);
+        }
+        return null;
     }
 }
