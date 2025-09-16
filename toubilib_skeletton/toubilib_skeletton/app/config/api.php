@@ -9,4 +9,7 @@ return [
     'getPraticienDetailsAction' => function($container) {
         return new getPraticienDetailsAction($container->get('servicePraticien'));
     },
+    'getCreneauxAction' => function($container) {
+        return new \toubilib\api\actions\getCreneauxAction($container->get('servicePraticien'));
+    },
 ];
