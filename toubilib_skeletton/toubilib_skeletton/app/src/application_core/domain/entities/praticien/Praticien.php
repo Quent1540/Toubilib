@@ -16,6 +16,15 @@ class Praticien
         $this->specialite_id = $specialite_id;
     }
 
+    public function toArray(): array{
+        return [
+            'id' => $this->id,
+            'nom' => $this->nom,
+            'prenom' => $this->prenom,
+            'specialite_id' => $this->specialite_id,
+        ];
+    }
+
     public function getPratId(): string{
         return $this->id;
     }

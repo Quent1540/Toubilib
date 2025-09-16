@@ -2,7 +2,7 @@
 
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\infra\repositories\PDOPraticienRepository;
-use toubilib\core\application\usecases\ServicePraticien;
+use toubilib\api\actions\getAllPraticiensAction;
 
 return [
     'pdo' => function($container) {
@@ -11,5 +11,8 @@ return [
     },
     PraticienRepositoryInterface::class => function($container) {
         return new PDOPraticienRepository($container->get('pdo'));
+    },
+    getAllPraticiensAction::class => function($container) {
+        return new getAllPraticiensAction($container->get(PraticienRepositoryInterface::class));
     },
 ];
