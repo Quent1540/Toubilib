@@ -1,5 +1,6 @@
 <?php
 
+use toubilib\api\actions\getPraticienDetailsAction;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\core\application\ports\spi\RDVRepositoryInterface;
 use toubilib\infra\repositories\PDOPraticienRepository;
@@ -27,4 +28,7 @@ return [
     RDVRepositoryInterface::class => function($container) {
         return new PDORdvRepository($container->get('pdo_rdv'));
     },
+    getPraticienDetailsAction::class => function($container) {
+        return new getPraticienDetailsAction($container->get(PraticienRepositoryInterface::class));
+    }
 ];

@@ -5,5 +5,5 @@ use toubilib\core\domain\entities\praticien\Praticien;
 
 Interface PraticienRepositoryInterface{
     public function listerPraticiens(): array;
-    public function findById($id): Praticien;
+    public function detailsPraticien(string $id): ?Praticien;
 }

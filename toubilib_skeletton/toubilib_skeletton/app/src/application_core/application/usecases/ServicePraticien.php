@@ -4,6 +4,7 @@ namespace toubilib\core\application\usecases;
 
 use toubilib\core\application\ports\api\ServicePraticienInterface;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
+use toubilib\core\domain\entities\praticien\Praticien;
 
 class ServicePraticien implements ServicePraticienInterface
 {
@@ -15,10 +16,10 @@ class ServicePraticien implements ServicePraticienInterface
     }
 
     public function listerPraticiens(): array {
-    	return $this->praticienRepository->findAll();
+    	return $this->praticienRepository->listerPraticiens();
     }
 
-    public function afficherPraticien($id) {
-        return $this->praticienRepository->findById($id);
+    public function afficherPraticien($id): Praticien {
+        return $this->praticienRepository->detailsPraticien($id);
     }
 }
