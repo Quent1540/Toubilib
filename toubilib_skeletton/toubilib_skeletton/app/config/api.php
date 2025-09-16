@@ -1,5 +1,5 @@
 <?php
-use src\api\actions\getAllPraticiensAction;
+use toubilib\api\actions\getAllPraticiensAction;
 use toubilib\api\actions\getPraticienDetailsAction;
 
 return [

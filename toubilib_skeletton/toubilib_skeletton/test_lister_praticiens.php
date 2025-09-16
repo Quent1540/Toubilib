@@ -1,8 +1,8 @@
 <?php
-require 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-$settings = require 'toubilib_skeletton/app/config/settings.php';
-$services = require 'toubilib_skeletton/app/config/services.php';
+$settings = require __DIR__ . '/app/config/settings.php';
+$services = require __DIR__ . '/app/config/services.php';
 
 $container = new class($settings, $services) {
     private $settings;
