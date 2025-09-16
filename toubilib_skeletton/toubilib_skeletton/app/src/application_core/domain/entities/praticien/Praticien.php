@@ -24,20 +24,4 @@ class Praticien
             'specialite_id' => $this->specialite_id,
         ];
     }
-
-    public function getPratId(): string{
-        return $this->id;
-    }
-
-    public function getPratNom(): string{
-        return $this->nom;
-    }
-
-    public function getPratPrenom(): string{
-        return $this->prenom;
-    }
-
-    public function getPratSpecialiteId(): string{
-        return $this->specialite_id;
-    }
 }
