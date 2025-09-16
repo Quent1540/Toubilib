@@ -11,7 +11,7 @@ class PDOPraticienRepository implements PraticienRepositoryInterface
         $this->pdo = $pdo;
     }
 
-    public function findAll(): array {
+    public function listerPraticiens(): array {
         $stmt = $this->pdo->prepare('SELECT * FROM praticien');
         $stmt->execute();
 

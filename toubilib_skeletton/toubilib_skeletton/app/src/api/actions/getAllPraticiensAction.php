@@ -1,15 +1,16 @@
 <?php
 
-namespace src\api\actions;
+namespace toubilib\api\actions;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 
 class getAllPraticiensAction extends AbstractAction
 {
     private $servicePraticien;
 
-    public function __construct($servicePraticien)
+    public function __construct(PraticienRepositoryInterface $servicePraticien)
     {
         $this->servicePraticien = $servicePraticien;
     }

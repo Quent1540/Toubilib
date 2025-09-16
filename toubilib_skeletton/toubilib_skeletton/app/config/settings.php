@@ -5,4 +5,5 @@ return [
         'user' => 'toubiprat',
         'password' => 'toubiprat',
     ],
+    'displayErrorDetails' => true,
 ];
