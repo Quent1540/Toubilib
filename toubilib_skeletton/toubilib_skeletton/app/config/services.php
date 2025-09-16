@@ -1,16 +1,18 @@
 <?php
+
+use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\infra\repositories\PDOPraticienRepository;
-use toubilib\core\application\usecases\ServicePraticien;
+use toubilib\api\actions\getAllPraticiensAction;
 
 return [
     'pdo' => function($container) {
         $settings = $container->get('settings')['db'];
         return new \PDO($settings['dsn'], $settings['user'], $settings['password']);
     },
-    'praticienRepository' => function($container) {
+    PraticienRepositoryInterface::class => function($container) {
         return new PDOPraticienRepository($container->get('pdo'));
     },
-    'servicePraticien' => function($container) {
-        return new ServicePraticien($container->get('praticienRepository'));
+    getAllPraticiensAction::class => function($container) {
+        return new getAllPraticiensAction($container->get(PraticienRepositoryInterface::class));
     },
 ];

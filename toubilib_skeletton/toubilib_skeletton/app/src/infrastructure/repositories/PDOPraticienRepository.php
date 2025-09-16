@@ -12,7 +12,7 @@ class PDOPraticienRepository implements PraticienRepositoryInterface
         $this->pdo = $pdo;
     }
 
-    public function findAll(): array {
+    public function listerPraticiens(): array {
         $stmt = $this->pdo->prepare('SELECT * FROM praticien');
         $stmt->execute();
 
@@ -25,14 +25,6 @@ class PDOPraticienRepository implements PraticienRepositoryInterface
 
     public function findById($id): Praticien
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM praticien WHERE id = :id');
-        $stmt->execute(['id' => $id]);
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-        if (!$row) {
-            throw new \RuntimeException("Praticien non trouvé avec l'id $id");
-        }
-
-        return new Praticien($row['id'], $row['nom'], $row['prenom'], $row['specialite_id']);
+        //A faire
     }
 }

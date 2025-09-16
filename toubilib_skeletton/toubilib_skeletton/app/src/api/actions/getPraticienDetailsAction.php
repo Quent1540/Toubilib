@@ -3,6 +3,7 @@ namespace toubilib\api\actions;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use toubilib\api\actions\AbstractAction;
 
 class getPraticienDetailsAction extends AbstractAction
 {
