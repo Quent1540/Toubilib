@@ -6,8 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use toubilib\api\actions\AbstractAction;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 
-class getPraticienDetailsAction extends AbstractAction
-{
+class getPraticienDetailsAction extends AbstractAction{
     private $servicePraticien;
 
     public function __construct(PraticienRepositoryInterface $servicePraticien){
@@ -18,12 +17,12 @@ class getPraticienDetailsAction extends AbstractAction
         $id = $args['id'];
         $praticien = $this->servicePraticien->detailsPraticien($id);
 
-        if ($praticien) {
+        if ($praticien){
             $response->getBody()->write(json_encode($praticien->toArray()));
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus(200);
-        } else {
+        }else{
             $response->getBody()->write(json_encode(['error' => 'Praticien not found']));
             return $response
                 ->withHeader('Content-Type', 'application/json')

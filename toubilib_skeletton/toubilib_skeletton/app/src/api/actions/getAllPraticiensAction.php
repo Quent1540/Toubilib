@@ -6,8 +6,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 
-class getAllPraticiensAction extends AbstractAction
-{
+class getAllPraticiensAction extends AbstractAction{
     private $servicePraticien;
 
     public function __construct(PraticienRepositoryInterface $servicePraticien){

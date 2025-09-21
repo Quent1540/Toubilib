@@ -2,18 +2,29 @@
 
 namespace toubilib\core\domain\entities\praticien;
 
-class Praticien
-{
+class Praticien{
     private string $id;
     private string $nom;
     private string $prenom;
-    private string $specialite_id;
+    private Specialite $specialite;
+    private array $motifsVisite;
+    private array $moyensPaiement;
 
-    public function __construct(string $id, string $nom, string $prenom, string $specialite_id){
+    public function __construct(string $id, string $nom, string $prenom, Specialite $specialite, array $motifsVisite = [], array $moyensPaiement = []){
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->specialite_id = $specialite_id;
+        $this->specialite = $specialite;
+        $this->motifsVisite = $motifsVisite;
+        $this->moyensPaiement = $moyensPaiement;
+    }
+
+    public function getSpecialite(): Specialite{
+        return $this->specialite;
+    }
+
+    public function getID(): string{
+        return $this->id;
     }
 
     public function toArray(): array{
@@ -21,7 +32,9 @@ class Praticien
             'id' => $this->id,
             'nom' => $this->nom,
             'prenom' => $this->prenom,
-            'specialite_id' => $this->specialite_id,
+            'specialite' => $this->specialite ->toArray(),
+            'motifsVisite' => array_map(fn($m) => $m->toArray(), $this->motifsVisite),
+            'moyensPaiement' => array_map(fn($m) => $m->toArray(), $this->moyensPaiement),
         ];
     }
 }
