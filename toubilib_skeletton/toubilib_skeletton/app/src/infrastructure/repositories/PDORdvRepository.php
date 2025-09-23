@@ -4,6 +4,7 @@ namespace toubilib\infra\repositories;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\core\domain\entities\praticien\Praticien;
 use toubilib\core\application\ports\spi\RDVRepositoryInterface;
+use toubilib\core\domain\entities\rdv\RDV;
 
 class PDORdvRepository implements RDVRepositoryInterface
 {
@@ -26,5 +27,20 @@ class PDORdvRepository implements RDVRepositoryInterface
             'dateFin' => $dateFin,
         ]);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getRDVById($id): ?RDV{
+        $stmt = $this->pdo->prepare('SELECT * FROM rdv WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$row) return null;
+
+        return new \toubilib\core\domain\entities\rdv\RDV(
+            $row['id'],
+            $row['praticien_id'],
+            $row['patient_id'],
+            $row['date_heure_debut'],
+        );
     }
 }

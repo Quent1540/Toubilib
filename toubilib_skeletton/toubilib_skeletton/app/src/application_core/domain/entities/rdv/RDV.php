@@ -1,9 +1,8 @@
 <?php
 
-namespace toubilib\core\domain\entities;
+namespace toubilib\core\domain\entities\rdv;
 
-class RDV
-{
+class RDV{
     private string $id;
     private string $nom;
     private string $prenom;

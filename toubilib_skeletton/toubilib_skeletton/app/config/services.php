@@ -1,6 +1,7 @@
 <?php
 
 use toubilib\api\actions\getPraticienDetailsAction;
+use toubilib\api\actions\getRDVAction;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\core\application\ports\spi\RDVRepositoryInterface;
 use toubilib\infra\repositories\PDOPraticienRepository;
@@ -30,5 +31,8 @@ return [
     },
     getPraticienDetailsAction::class => function($container) {
         return new getPraticienDetailsAction($container->get(PraticienRepositoryInterface::class));
+    },
+    getRDVAction::class => function($container) {
+        return new getRDVAction($container->get(RDVRepositoryInterface::class));
     }
 ];
