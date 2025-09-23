@@ -32,4 +32,7 @@ class ServiceRDV implements ServiceRDVInterface
         );
         $this->rdvRepository->creerRendezVous($rdv);
     }
+    public function getRDVById($id): ?RDV{
+        return $this->rdvRepository->getRDVById($id);
+    }
 }
