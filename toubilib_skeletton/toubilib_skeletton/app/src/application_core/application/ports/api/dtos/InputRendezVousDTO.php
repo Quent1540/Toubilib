@@ -1,8 +1,7 @@
 <?php
 namespace toubilib\core\application\ports\api\dtos;
 
-class InputRendezVousDTO
-{
+class InputRendezVousDTO{
     public string $praticienId;
     public string $patientId;
     public string $dateHeureDebut;
@@ -10,14 +9,7 @@ class InputRendezVousDTO
     public string $motif;
     public int $dureeMinutes;
 
-    public function __construct(
-        string $praticienId,
-        string $patientId,
-        string $dateHeureDebut,
-        string $dateHeureFin,
-        string $motif,
-        int $dureeMinutes
-    ) {
+    public function __construct(string $praticienId, string $patientId, string $dateHeureDebut, string $dateHeureFin, string $motif, int $dureeMinutes){
         $this->praticienId = $praticienId;
         $this->patientId = $patientId;
         $this->dateHeureDebut = $dateHeureDebut;
