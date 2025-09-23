@@ -5,20 +5,23 @@ class InputRendezVousDTO
 {
     public string $praticienId;
     public string $patientId;
-    public \DateTimeImmutable $dateHeure;
+    public string $dateHeureDebut;
+    public string $dateHeureFin;
     public string $motif;
     public int $dureeMinutes;
 
     public function __construct(
         string $praticienId,
         string $patientId,
-        \DateTimeImmutable $dateHeure,
+        string $dateHeureDebut,
+        string $dateHeureFin,
         string $motif,
         int $dureeMinutes
     ) {
         $this->praticienId = $praticienId;
         $this->patientId = $patientId;
-        $this->dateHeure = $dateHeure;
+        $this->dateHeureDebut = $dateHeureDebut;
+        $this->dateHeureFin = $dateHeureFin;
         $this->motif = $motif;
         $this->dureeMinutes = $dureeMinutes;
     }

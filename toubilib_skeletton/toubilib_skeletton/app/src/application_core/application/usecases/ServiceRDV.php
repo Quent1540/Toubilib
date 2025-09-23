@@ -26,9 +26,10 @@ class ServiceRDV implements ServiceRDVInterface
         $rdv = new RDV(
             $dto->praticienId,
             $dto->patientId,
-            $dto->dateHeure,
+            $dto->dateHeureDebut,
+            $dto->dateHeureFin,
             $dto->motif,
-            $dto->dureeMinutes,
+            $dto->dureeMinutes
         );
         $this->rdvRepository->creerRendezVous($rdv);
     }

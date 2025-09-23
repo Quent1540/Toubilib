@@ -34,7 +34,7 @@ class PDORdvRepository implements RDVRepositoryInterface
     public function creerRendezVous(RDV $rdv): void
     {
         $sql = "INSERT INTO rdv (praticien_id, patient_id, date_heure, motif, duree_minutes)
-                VALUES ($rdv->getIdPrat(), $rdv->getIdPat(), $rdv->getDateHeure, $rdv->getMotif(), $rdv->getDuree())";
+                VALUES ($rdv->getIdPrat(), $rdv->getIdPat(), $rdv->getDateHeureDebut(),$rdv->getDateHeureFin, $rdv->getMotif(), $rdv->getDuree())";
     }
 
     public function getRDVById($id): ?RDV{

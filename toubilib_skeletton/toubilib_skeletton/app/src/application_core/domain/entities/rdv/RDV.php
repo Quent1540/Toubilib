@@ -6,14 +6,16 @@ class RDV
 {
     private string $id_prat;
     private string $id_pat;
-    private string $date_heure;
+    private string $date_heure_debut;
+    private string $date_heure_fin;
     private string $motif;
     private int $duree;
 
-    public function __construct(string $id_prat,string $id_pat, string $date_heure, string $motif, int $duree){
+    public function __construct(string $id_prat,string $id_pat, string $date_heure_debut,string $date_heure_fin, string $motif, int $duree){
         $this->id_prat = $id_prat;
         $this->id_pat = $id_pat;
-        $this->date_heure = $date_heure;
+        $this->date_heure_debut = $date_heure_debut;
+        $this->date_heure_fin = $date_heure_fin;
         $this->motif = $motif;
         $this->duree = $duree;
     }
@@ -22,7 +24,8 @@ class RDV
         return [
             'id_prat' => $this->id_prat,
             'id_pat' => $this->id_pat,
-            'date_heure' => $this->date_heure,
+            'date_heure_debut' => $this->date_heure_debut,
+            'date_heure_fin' => $this->date_heure_fin,
             'motif' => $this->motif,
             'duree' => $this->duree
         ];
@@ -34,8 +37,11 @@ class RDV
     public function getIdPat(): string{
         return $this->id_pat;
     }
-    public function getDateHeure(): string{
-        return $this->date_heure;
+    public function getDateHeureDebut(): string{
+        return $this->date_heure_debut;
+    }
+    public function getDateHeureFin(): string{
+        return $this->date_heure_fin;
     }
     public function getMotif(): string{
         return $this->motif;
