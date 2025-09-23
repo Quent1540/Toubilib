@@ -10,7 +10,7 @@ class RDV
     private string $motif;
     private int $duree;
 
-    public function __construct(string $id_prat,string $id_pat, string $date_heure, string $motif, string $duree){
+    public function __construct(string $id_prat,string $id_pat, string $date_heure, string $motif, int $duree){
         $this->id_prat = $id_prat;
         $this->id_pat = $id_pat;
         $this->date_heure = $date_heure;

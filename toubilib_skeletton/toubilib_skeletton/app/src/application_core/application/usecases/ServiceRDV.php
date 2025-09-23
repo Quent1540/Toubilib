@@ -5,7 +5,7 @@ namespace toubilib\core\application\usecases;
 use toubilib\core\application\ports\api\dtos\InputRendezVousDTO;
 use toubilib\core\application\ports\api\ServiceRDVInterface;
 use toubilib\core\application\ports\spi\RDVRepositoryInterface;
-use toubilib\core\domain\entities\RDV;
+use toubilib\core\domain\entities\rdv\RDV;
 
 class ServiceRDV implements ServiceRDVInterface
 {

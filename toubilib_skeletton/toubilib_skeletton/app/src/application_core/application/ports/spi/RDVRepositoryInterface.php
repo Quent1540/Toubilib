@@ -2,7 +2,7 @@
 namespace toubilib\core\application\ports\spi;
 
 use toubilib\core\domain\entities\praticien\Praticien;
-use toubilib\core\domain\entities\RDV;
+use toubilib\core\domain\entities\rdv\RDV;
 
 Interface RDVRepositoryInterface
 {
