@@ -4,6 +4,7 @@ namespace toubilib\infra\repositories;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\core\domain\entities\praticien\Praticien;
 use toubilib\core\application\ports\spi\RDVRepositoryInterface;
+use toubilib\core\domain\entities\RDV;
 
 class PDORdvRepository implements RDVRepositoryInterface
 {
@@ -26,5 +27,11 @@ class PDORdvRepository implements RDVRepositoryInterface
             'dateFin' => $dateFin,
         ]);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function creerRendezVous(RDV $rdv): void
+    {
+        $sql = "INSERT INTO rdv (praticien_id, patient_id, date_heure, motif, duree_minutes)
+                VALUES ($rdv->getIdPrat(), $rdv->getIdPat(), $rdv->getDateHeure, $rdv->getMotif(), $rdv->getDuree())";
     }
 }
