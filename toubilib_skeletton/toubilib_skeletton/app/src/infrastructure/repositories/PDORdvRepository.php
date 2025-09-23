@@ -45,11 +45,11 @@ class PDORdvRepository implements RDVRepositoryInterface
         if (!$row) return null;
 
         return new \toubilib\core\domain\entities\rdv\RDV(
-            $row['id'],
             $row['praticien_id'],
             $row['patient_id'],
             $row['date_heure_debut'],
             $row['date_heure_fin'],
+            $row['motif_visite'],
             $row['duree'],
         );
     }
