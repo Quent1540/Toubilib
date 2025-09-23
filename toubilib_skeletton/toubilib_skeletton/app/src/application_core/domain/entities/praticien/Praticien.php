@@ -37,4 +37,8 @@ class Praticien{
             'moyensPaiement' => array_map(fn($m) => $m->toArray(), $this->moyensPaiement),
         ];
     }
+
+    public function getMotifsAutorises(): array{
+        return $this->motifsVisite;
+    }
 }

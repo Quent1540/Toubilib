@@ -1,0 +1,36 @@
+<?php
+namespace toubilib\infra\repositories;
+
+use toubilib\core\domain\entities\patient\Patient;
+
+class PDOPatientRepository
+{
+    private \PDO $pdo;
+
+    public function __construct(\PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function listerPatients(): array
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM patient');
+        $stmt->execute();
+
+        $patients = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $patients[] = new Patient(
+                $row['id'],
+                $row['nom'],
+                $row['prenom'],
+                $row['date_naissance'],
+                $row['adresse'],
+                $row['code_postal'],
+                $row['ville'],
+                $row['email'],
+                $row['telephone']
+            );
+        }
+        return $patients;
+    }
+}
