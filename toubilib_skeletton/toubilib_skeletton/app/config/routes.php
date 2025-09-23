@@ -16,6 +16,7 @@ return function( \Slim\App $app):\Slim\App {
     $app->get('/praticiens/{id}/creneaux', \toubilib\api\actions\getCreneauxAction::class);
     $app->get('/praticiens/{id}', \toubilib\api\actions\getPraticienDetailsAction::class);
     $app->get('/rdv/{id}', \toubilib\api\actions\getRDVAction::class);
+    $app->post('/rdv', \toubilib\api\actions\creerRDVAction::class);
 
     return $app;
 };
