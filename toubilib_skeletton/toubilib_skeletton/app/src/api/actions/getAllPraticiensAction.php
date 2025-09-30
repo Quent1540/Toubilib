@@ -17,6 +17,7 @@ class getAllPraticiensAction extends AbstractAction{
         $praticiens = $this->servicePraticien->listerPraticiens();
         $praticiensArray = array_map(fn($p) => $p->toArray(), $praticiens);
         $response->getBody()->write(json_encode($praticiensArray));
+        //200 ok
         return $response
             ->withHeader('Content-Type', 'application/json')
             ->withStatus(200);

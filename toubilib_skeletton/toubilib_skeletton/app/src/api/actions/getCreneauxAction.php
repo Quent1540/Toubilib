@@ -23,12 +23,14 @@ class getCreneauxAction extends AbstractAction
 
         if (!$id || !$dateDebut || !$dateFin) {
             $response->getBody()->write(json_encode(['error' => 'id, date_debut et date_fin requis']));
+            //400 bad request
             return $response->withHeader('Content-Type', 'application/json')->withStatus(400);
         }
 
         $creneaux = $this->serviceRDV->listerCreneaux($id, $dateDebut, $dateFin);
 
         $response->getBody()->write(json_encode($creneaux));
+        //200 ok
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 }

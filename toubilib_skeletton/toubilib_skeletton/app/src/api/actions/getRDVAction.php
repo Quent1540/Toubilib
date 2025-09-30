@@ -19,11 +19,13 @@ class getRDVAction extends AbstractAction{
 
         if ($rdv){
             $response->getBody()->write(json_encode($rdv->toArray()));
+            //200 ok
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus(200);
         }else{
             $response->getBody()->write(json_encode(['error' => 'RDV not found']));
+            //404 not found
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus(404);

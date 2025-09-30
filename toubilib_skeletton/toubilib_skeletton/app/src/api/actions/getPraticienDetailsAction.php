@@ -19,11 +19,13 @@ class getPraticienDetailsAction extends AbstractAction{
 
         if ($praticien){
             $response->getBody()->write(json_encode($praticien->toArray()));
+            //200 ok
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus(200);
         }else{
             $response->getBody()->write(json_encode(['error' => 'Praticien not found']));
+            //404 not found
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withStatus(404);

@@ -26,10 +26,11 @@ class creerRDVAction extends AbstractAction{
             //Appel du service pour créer le rdv
             $this->serviceRDV->creerRendezVous($dto);
             $response->getBody()->write(json_encode(['message' => 'Rendez-vous créé']));
+            //201 Created
             return $response->withStatus(201)->withHeader('Content-Type', 'application/json');
         } catch (\Exception $e) {
             $response->getBody()->write(json_encode(['error' => $e->getMessage()]));
-            //409 erreur métier, 400 autres erreurs
+            //409 erreur métier, 400 autres erreurs données invalides
             $status = ($e->getCode() === 409) ? 409 : 400;
             return $response->withStatus($status)->withHeader('Content-Type', 'application/json');
         }
