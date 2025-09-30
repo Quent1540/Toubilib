@@ -1,5 +1,6 @@
 <?php
 
+use toubilib\api\actions\annulerRDVAction;
 use toubilib\api\actions\creerRDVAction;
 use toubilib\api\actions\getPraticienDetailsAction;
 use toubilib\api\actions\getRDVAction;
@@ -38,5 +39,8 @@ return [
     },
     creerRDVAction::class => function($container) {
         return new creerRDVAction($container->get(RDVRepositoryInterface::class));
+    },
+    annulerRDVAction::class => function($container) {
+        return new annulerRDVAction($container->get(RDVRepositoryInterface::class));
     },
 ];

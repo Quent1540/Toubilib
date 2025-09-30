@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use toubilib\api\actions\annulerRDVAction;
 use toubilib\api\actions\getAllPraticiensAction;
 
 
@@ -16,6 +17,7 @@ return function( \Slim\App $app):\Slim\App {
     $app->get('/praticiens/{id}', \toubilib\api\actions\getPraticienDetailsAction::class);
     $app->get('/rdvs/{id}', \toubilib\api\actions\getRDVAction::class);
     $app->post('/rdvs', \toubilib\api\actions\creerRDVAction::class);
+    $app->post('/rdvs/{id}/annuler', annulerRDVAction::class);
 
     return $app;
 };

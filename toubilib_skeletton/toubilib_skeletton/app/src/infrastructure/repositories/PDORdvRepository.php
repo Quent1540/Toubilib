@@ -51,6 +51,13 @@ class PDORdvRepository implements RDVRepositoryInterface
             $row['date_heure_fin'],
             $row['motif_visite'],
             $row['duree'],
+            $row['status'] ?? 0
         );
+    }
+
+    public function annulerRendezVous($id): void{
+        $sql = "UPDATE rdv SET status = 1 WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
     }
 }

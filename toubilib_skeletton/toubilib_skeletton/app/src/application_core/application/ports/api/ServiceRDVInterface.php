@@ -8,4 +8,5 @@ Interface ServiceRDVInterface{
     public function listerCreneaux($praticienId, $dateDebut, $dateFin): array;
     public function getRDVById($id): ?RDV;
     public function creerRendezVous(InputRendezVousDTO $dto): void;
+    public function annulerRendezVous($id): void;
 }
