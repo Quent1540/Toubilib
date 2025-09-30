@@ -27,7 +27,7 @@ services:
     image: 'postgres:latest'
     env_file: ./toubipratdb.env.dist
     ports:
-      - '5432:5432'
+    - '5432:5432'
     networks:
       - toubilib.net
     volumes:
@@ -58,7 +58,7 @@ services:
     image: 'postgres:latest'
     env_file: ./toubipatientdb.env
     ports:
-      - '5434:5432'
+      - '5435:5432'
     networks:
       - toubilib.net
     volumes:
