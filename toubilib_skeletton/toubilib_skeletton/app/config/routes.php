@@ -22,6 +22,7 @@ return function( \Slim\App $app):\Slim\App {
     $app->get('/praticien/{id}/{date_debut}/agenda', getAgendaPraticienAction::class);
     $app->get('/praticien/{id}/{date_debut}/{date_fin}/agenda', getAgendaPraticienAction::class);
     $app->post('/rdvs/{id}/annuler', annulerRDVAction::class);
+    $app->get('/patients/{id}', \toubilib\api\actions\getPatientDetailsAction::class);
 
     return $app;
 };

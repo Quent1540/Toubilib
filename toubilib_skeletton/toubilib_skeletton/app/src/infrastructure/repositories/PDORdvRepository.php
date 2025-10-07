@@ -76,7 +76,13 @@ class PDORdvRepository implements RDVRepositoryInterface
 
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $rdvs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($rdvs as &$rdv) {
+                $rdv['details du patient'] = "http://localhost:6080/patients/" . $rdv['patient_id'];
+            }
+
+            return $rdvs;
         }
     }
 

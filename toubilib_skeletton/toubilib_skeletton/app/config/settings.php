@@ -11,6 +11,11 @@ return [
             'user' => 'toubirdv',
             'password' => 'toubirdv'
             ],
+        'db_patient' => [
+            'dsn' => 'pgsql:host=toubipat.db;dbname=toubipat',
+            'user' => 'toubipat',
+            'password' => 'toubipat'
+        ],
         'displayErrorDetails' => true,
     ],
 ];

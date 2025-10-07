@@ -2,6 +2,7 @@
 
 use toubilib\api\actions\annulerRDVAction;
 use toubilib\api\actions\creerRDVAction;
+use toubilib\api\actions\getPatientDetailsAction;
 use toubilib\api\actions\getPraticienDetailsAction;
 use toubilib\api\actions\getRDVAction;
 use toubilib\core\application\ports\spi\PatientRepositoryInterface;
@@ -22,6 +23,10 @@ return [
         $settings = $container->get('settings')['db_rdv'];
         return new \PDO($settings['dsn'], $settings['user'], $settings['password']);
     },
+    'pdo_patient' => function($container) {
+        $settings = $container->get('settings')['db_patient'];
+        return new \PDO($settings['dsn'], $settings['user'], $settings['password']);
+    },
     PraticienRepositoryInterface::class => function($container) {
         return new PDOPraticienRepository($container->get('pdo'));
     },
@@ -35,7 +40,7 @@ return [
         return new PDORdvRepository($container->get('pdo_rdv'));
     },
     PatientRepositoryInterface::class =>function($container) {
-        return new \toubilib\infra\repositories\PDOPatientRepository($container->get('pdo'));
+        return new \toubilib\infra\repositories\PDOPatientRepository($container->get('pdo_patient'));
     },
     getPraticienDetailsAction::class => function($container) {
         return new getPraticienDetailsAction($container->get(PraticienRepositoryInterface::class));
@@ -60,5 +65,8 @@ return [
     },
     annulerRDVAction::class => function($container) {
         return new annulerRDVAction($container->get(RDVRepositoryInterface::class));
+    },
+    getPatientDetailsAction::class => function($container) {
+        return new getPatientDetailsAction($container->get(PatientRepositoryInterface::class));
     },
 ];

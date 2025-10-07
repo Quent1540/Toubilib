@@ -17,4 +17,7 @@ class ServicePatient implements ServicePatientInterface{
     public function listerPatients(): array{
         return $this->patientRepository->listerPatients();
     }
+    public function detailsPatient(string $id): ?Patient{
+        return $this->patientRepository->detailsPatient($id);
+    }
 }

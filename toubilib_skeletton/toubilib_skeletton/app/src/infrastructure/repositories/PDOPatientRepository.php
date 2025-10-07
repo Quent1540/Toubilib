@@ -34,4 +34,25 @@ class PDOPatientRepository implements PatientRepositoryInterface
         }
         return $patients;
     }
+    public function detailsPatient(string $id): ?Patient
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM patient WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$row) return null;
+
+        return new Patient(
+            $row['id'],
+            $row['nom'],
+            $row['prenom'],
+            $row['date_naissance'],
+            $row['adresse'],
+            $row['code_postal'],
+            $row['ville'],
+            $row['email'],
+            $row['telephone']
+        );
+    }
+
 }
