@@ -46,7 +46,7 @@ class ServiceRDV implements ServiceRDVInterface
         //Verifier la validité du créneau
         $dateDebut = new \DateTimeImmutable($dto->dateHeureDebut);
         $dateFin = new \DateTimeImmutable($dto->dateHeureFin);
-        $jour = (int)$dateDebut->format('N'); // 1 = lundi, 7 = dimanche
+        $jour = (int)$dateDebut->format('N');
         $heureDebut = (int)$dateDebut->format('H');
         $heureFin = (int)$dateFin->format('H');
         $minuteFin = (int)$dateFin->format('i');
@@ -81,5 +81,13 @@ class ServiceRDV implements ServiceRDVInterface
 
     public function getAgendaPraticien($praticienId, $dateDebut = null, $dateFin = null): array {
         return $this->rdvRepository->getRendezVousByPraticien($praticienId, $dateDebut, $dateFin);
+    }
+    public function annulerRendezVous($id): void
+    {
+        $rdv = $this->rdvRepository->getRDVById($id);
+        if ($rdv === null) {
+            throw new \DomainException("Rendez-vous inexistant");
+        }
+        $this->rdvRepository->annulerRendezVous($id);
     }
 }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use toubilib\api\actions\annulerRDVAction;
 use toubilib\api\actions\getAllPraticiensAction;
 use toubilib\api\actions\getAgendaPraticienAction;
 
@@ -20,6 +21,7 @@ return function( \Slim\App $app):\Slim\App {
     $app->get('/praticien/{id}/agenda', getAgendaPraticienAction::class);
     $app->get('/praticien/{id}/{date_debut}/agenda', getAgendaPraticienAction::class);
     $app->get('/praticien/{id}/{date_debut}/{date_fin}/agenda', getAgendaPraticienAction::class);
+    $app->post('/rdvs/{id}/annuler', annulerRDVAction::class);
 
     return $app;
 };
