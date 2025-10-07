@@ -1,9 +1,10 @@
 <?php
 namespace toubilib\infra\repositories;
 
+use toubilib\core\application\ports\spi\PatientRepositoryInterface;
 use toubilib\core\domain\entities\patient\Patient;
 
-class PDOPatientRepository
+class PDOPatientRepository implements PatientRepositoryInterface
 {
     private \PDO $pdo;
 

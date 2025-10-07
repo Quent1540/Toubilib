@@ -3,11 +3,14 @@
 use toubilib\api\actions\creerRDVAction;
 use toubilib\api\actions\getPraticienDetailsAction;
 use toubilib\api\actions\getRDVAction;
+use toubilib\core\application\ports\spi\PatientRepositoryInterface;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\core\application\ports\spi\RDVRepositoryInterface;
+use toubilib\core\application\usecases\ServiceRDV;
 use toubilib\infra\repositories\PDOPraticienRepository;
 use toubilib\api\actions\getAllPraticiensAction;
 use toubilib\infra\repositories\PDORdvRepository;
+use toubilib\api\actions\getAgendaPraticienAction;
 
 return [
     'pdo' => function($container) {
@@ -30,6 +33,9 @@ return [
     RDVRepositoryInterface::class => function($container) {
         return new PDORdvRepository($container->get('pdo_rdv'));
     },
+    PatientRepositoryInterface::class =>function($container) {
+        return new \toubilib\infra\repositories\PDOPatientRepository($container->get('pdo'));
+    },
     getPraticienDetailsAction::class => function($container) {
         return new getPraticienDetailsAction($container->get(PraticienRepositoryInterface::class));
     },
@@ -38,5 +44,17 @@ return [
     },
     creerRDVAction::class => function($container) {
         return new creerRDVAction($container->get(RDVRepositoryInterface::class));
+    },
+    getAgendaPraticienAction::class => function($container) {
+        return new getAgendaPraticienAction(
+            $container->get(ServiceRDV::class)
+        );
+    },
+    ServiceRDV::class => function($container) {
+        return new ServiceRDV(
+            $container->get(RDVRepositoryInterface::class),
+            $container->get(PraticienRepositoryInterface::class),
+            $container->get(PatientRepositoryInterface::class)
+        );
     },
 ];

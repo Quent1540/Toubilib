@@ -1,6 +1,7 @@
 <?php
 namespace toubilib\infra\repositories;
 
+use PDO;
 use toubilib\core\application\ports\spi\PraticienRepositoryInterface;
 use toubilib\core\domain\entities\praticien\Praticien;
 use toubilib\core\application\ports\spi\RDVRepositoryInterface;
@@ -52,5 +53,28 @@ class PDORdvRepository implements RDVRepositoryInterface
             $row['motif_visite'],
             $row['duree'],
         );
+    }
+    public function getRendezVousByPraticien($praticienId, $dateDebut = null, $dateFin = null): array
+    {
+        {
+            $sql = "SELECT id, date_heure_debut,date_heure_fin, duree, motif_visite, status, patient_id
+            FROM rdv
+            WHERE praticien_id = :praticienId";
+            $params = ['praticienId' => $praticienId];
+
+            if ($dateDebut) {
+                $sql .= " AND DATE(date_heure_debut) >= :dateDebut";
+                $params['dateDebut'] = $dateDebut;
+            }
+            if ($dateFin) {
+                $sql .= " AND DATE(date_heure_fin) <= :dateFin";
+                $params['dateFin'] = $dateFin;
+            }
+            $sql .= " ORDER BY date_heure_debut ASC";
+
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 }

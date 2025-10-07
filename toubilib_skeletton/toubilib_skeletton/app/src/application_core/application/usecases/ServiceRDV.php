@@ -78,4 +78,8 @@ class ServiceRDV implements ServiceRDVInterface
     public function getRDVById($id): ?RDV{
         return $this->rdvRepository->getRDVById($id);
     }
+
+    public function getAgendaPraticien($praticienId, $dateDebut = null, $dateFin = null): array {
+        return $this->rdvRepository->getRendezVousByPraticien($praticienId, $dateDebut, $dateFin);
+    }
 }
