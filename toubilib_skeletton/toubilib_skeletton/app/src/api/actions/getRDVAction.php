@@ -18,7 +18,18 @@ class getRDVAction extends AbstractAction{
         $rdv = $this->serviceRDV->getRDVById($id);
 
         if ($rdv){
-            $response->getBody()->write(json_encode($rdv->toArray()));
+            $data = $rdv->toArray();
+            $data['links'] = [
+                [
+                    'rel' => 'self',
+                    'href' => '/rdvs/' . $id
+                ],
+                [
+                    'rel' => 'annuler',
+                    'href' => '/rdvs/' . $id . '/annuler'
+                ]
+            ];
+            $response->getBody()->write(json_encode($data));
             //200 ok
             return $response
                 ->withHeader('Content-Type', 'application/json')

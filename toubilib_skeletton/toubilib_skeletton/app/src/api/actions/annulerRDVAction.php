@@ -17,7 +17,20 @@ class annulerRDVAction extends AbstractAction{
         $id = $args['id'];
         try{
             $this->serviceRDV->annulerRendezVous($id);
-            $response->getBody()->write(json_encode(['message' => 'Rendez-vous annulé']));
+            $data = [
+                'message' => 'Rendez-vous annulé',
+                'links' => [
+                    [
+                        'rel' => 'self',
+                        'href' => '/rdvs/' . $id . '/annuler'
+                    ],
+                    [
+                        'rel' => 'rdv',
+                        'href' => '/rdvs/' . $id
+                    ]
+                ]
+            ];
+            $response->getBody()->write(json_encode($data));
             //200 ok
             return $response
                 ->withHeader('Content-Type', 'application/json')
