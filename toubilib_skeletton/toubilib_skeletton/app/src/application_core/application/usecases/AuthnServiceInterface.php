@@ -1,12 +1,9 @@
 <?php
 namespace toubilib\core\application\usecases;
 
-use lachaudiere\application_core\domain\entities\User;
+use toubilib\core\application\ports\api\dtos\ProfilDTO;
+use toubilib\core\domain\entities\user\User;
 
 interface AuthnServiceInterface {
-    // on garde l'ancienne au cas où mais plus utile 
-    public function register(string $email, string $password, int $role = 1): bool;
-    public function verifyCredentials(string $email, string $password): User;
-    public function registerUser(string $email, string $password, string $passwordConfirm, int $role = 1): User;
-    
+    public function verifyCredentials(string $email, string $password): ProfilDTO;
 }
